@@ -1,0 +1,42 @@
+\chapter{Vereisten aan code voor ‘The Challenge’}
+
+Hieronder is aangegeven waaraan jouw code moet voldoen. Dit is deel van de beoordeling!
+
+\begin{itemize}
+	\item Bronvermelding
+	
+Je kunt de opdrachten maken door de Arduino voorbeelden te bestuderen en slim samen te voegen. Je mag (moet!) dus code kopiëren. Vermeld in commentaar boven of achter je code waar je de code vandaan hebt. Je kunt bijvoorbeeld de naam van het voorbeeld opgeven of de URL van de webpagina waar je het vandaan hebt. Geen bronvermelding is (ook bij softwareontwikkeling!) plagiaat.
+
+\textit{Zorg dat jouw programma de structuur heeft zoals de voorbeeldcode van Arduino. }
+
+\item Gebruik van commentaar
+
+Commentaar staat tussen /* en */ en kan zo over meerdere regels staan of zelfs in een regel tussen programmacode, zoals in het voorbeeld hieronder:\\
+pinMode(LED\_BUILTIN /* dit is eigenlijk pin 13 */, OUTPUT);
+De andere manier om commentaar aan te geven is met // 
+Alles wat achter deze 2 slashes staat wordt als commentaar gezien en wordt door de compiler volledig genegeerd. Zo kan je ook (tijdelijk) regels in je programma uitzetten om iets uit te proberen.
+
+\item Layout van je programma.
+
+Een nette layout zorgt voor een goede leesbaarheid. In de Arduino omgeving is daar een eenvoudig hulpmiddel voor:  ga naar “Tools”, “Auto Format” of druk Ctrl+T.
+\item Kwaliteit van code
+
+Zorg dat dezelfde code niet op meerdere plaatsen gebruikt wordt. Dat maakt code slecht leesbaar en zeker op microcontrollers gaat dat ten koste van de schaarse geheugenruimte. Gebruik functies.
+
+\item Naamconventies
+
+Geef functies en variabelen een betekenisvolle naam en schrijf deze namen in camelCase (elk woord begint met een hoofdletter, behalve de eerste letter). Voorbeelden: 
+int pinCount;\\
+int myFunction();
+Constanten schrijf je in hoofdletters, woorden scheiden met underscore “\_”. Voorbeeld: \\
+\#define BEEP\_PIN 3 
+
+\item Versiebeheer
+
+Geef bestanden een betekenisvolle naam, liefst met een versienummer, zodat je ze later eenvoudig kunt terugvinden. Voorbeeld: “Thermometer-v0.1”. Doe dit met al je bestanden!
+
+\textbf{Tip:} Sla je programma regelmatig, na elke nieuwe tussenstap op met een nieuw versienummer. 
+Zo kan je altijd terug naar een werkende versie als er iets misgaat. 
+
+Beschrijf wijzigingen en versies als commentaar in je programma, dan hoef je niet veel te zoeken!
+\end{itemize}

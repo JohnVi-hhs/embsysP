@@ -1,0 +1,183 @@
+\documentclass[12pt,openright,twoside]{report}
+\usepackage[a4paper,top=25mm,bottom=25mm,right=25mm,left=25mm,bindingoffset=6mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish,british]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pict2e}
+\usepackage{tabu}
+\usepackage{booktabs}
+%\usepackage{bookmark,hyperref}
+\usepackage[hypertexnames=true]{hyperref}
+%\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage[nottoc]{tocbibind}
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+%\usepackage[table]{xcolor}
+%\usepackage{tabularray}
+\usepackage{watermark}
+\usepackage{wallpaper}
+\usepackage{eurosym}
+\usepackage[toc,title,page]{appendix}
+\usepackage{courier}
+\usepackage{listings} 
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{soul}
+\usepackage{comment}
+\usepackage{parskip}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+%\usepackage{fontspec}
+\graphicspath{{figuren/}}
+
+
+\definecolor{mygray}{gray}{0.85}
+
+\newcommand{\ctext}[3][RGB]{%
+	\begingroup
+	\definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
+	\hl{#3}%
+	\endgroup
+}
+
+
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newcommand*{\img}[1]{%
+	\raisebox{-.3\baselineskip}{%
+		\includegraphics[
+		height=\baselineskip,
+		width=\baselineskip,
+		keepaspectratio,
+		]{#1}%
+	}%
+}
+
+
+\input{arduinoLanguage.tex}    % adds the arduino language listing
+
+	
+%% Define an Arduino style fore use later %%
+\lstset{%
+	language=Arduino,
+	basicstyle=\footnotesize\ttfamily,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,                           
+	numbersep=8pt,
+	%	keywordstyle=\bfseries\color{keyword},
+	%	stringstyle=\color{blue},
+	%	commentstyle=\itshape\color{comment},
+	%	morecomment=[l][\color{cppgreen}]{\#},
+	morekeywords=[1]{},                  % [1] -> dark green
+	morekeywords=[2]{FILE_WRITE},        % [2] -> light blue
+	morekeywords=[3]{SD, File},          % [3] -> bold orange
+	morekeywords=[4]{open, exists},      % [4] -> orange
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	frame=lines,
+%	frame=shadowbox,
+	rulesepcolor=\color{arduinoBlue},
+	rulecolor=\color{black},
+	tabsize=4,
+	captionpos=b,
+	breaklines=true,
+	breakatwhitespace=false,
+	title=\lstname,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+	upquote=true,
+	aboveskip=1ex,
+	belowskip=2ex,
+	escapeinside={(*}{*)}
+}
+
+
+%Formatering av rubriker
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlesec, blindtext, color}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter}{20pt}{}{}
+\titlespacing*{\chapter}{0pt}{*0}{*3}
+\titlespacing*{\section}{0pt}{*4}{*1}
+\titlespacing*{\subsection}{0pt}{*3}{*0}
+\titlespacing*{\subsubsection}{0pt}{*4}{*1}
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tocloft} %Control the ToC formatting
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+%Formatting of page numbering (Comment to have the number centered)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[RO,LE]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[font=footnotesize,format=plain,labelfont=bf,textfont=sl]{caption}
+\usepackage[labelformat=simple,font=footnotesize,format=plain,labelfont=bf,textfont=sl]{subcaption}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdfnewwindow=true, 
+}
+%opening
+ %  \date{\today}
+ \date{}
+\title{
+
+{\vspace{-4cm}}
+	{\hspace{-20pt}\begin{bfseries}\Huge{\color{black}Technical Skills 2 \\Embedded Systems} \end{bfseries}  } \\
+	{(practicumhandleiding micro:bit V2)}
+\ThisCenterWallPaper{0.8}{figuren/bbcmicrobitV2.png}
+
+%	\vfill	
+	{\vspace{12cm}}	
+	{\color{white}  
+	\raggedleft  \par}
+
+}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+ \tableofcontents
+
+\let\cleardoublepage\clearpage
+
+
+\input{inleiding}
+
+\input{week1}
+%\input{deBewegingssensor}
+\input{matrix}
+%\input{bitWiseOp}
+
+
+\bibliographystyle{unsrt}
+\bibliography{reference}
+
+\input{appendix}
+\end{document}
