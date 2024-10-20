@@ -36,6 +36,8 @@
 \usepackage[T1]{fontenc}
 %\usepackage{fontspec}
 \graphicspath{{figuren/}}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
 
 
 \definecolor{mygray}{gray}{0.85}
@@ -63,6 +65,7 @@
 
 
 \input{arduinoLanguage.tex}    % adds the arduino language listing
+
 
 	
 %% Define an Arduino style fore use later %%
@@ -162,17 +165,16 @@
 
 \maketitle
 
-
  \tableofcontents
 
 \let\cleardoublepage\clearpage
 
-
+\include{mytikz}
 \input{inleiding}
 
 \input{week1}
 %\input{deBewegingssensor}
-\input{matrix}
+%\input{matrix}
 %\input{bitWiseOp}
 
 

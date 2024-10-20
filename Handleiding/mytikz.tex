@@ -1,0 +1,112 @@
+% tikzpicture.tex
+
+% Define styles for TikZ elements
+\tikzset{
+	io/.style = {trapezium, trapezium left angle=80, trapezium right angle=100, minimum width=1cm, minimum height=1cm, text centered, draw=black, fill=blue!30},
+	process/.style = {rectangle, minimum width=4cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+	andSetup/.style = {rectangle, minimum width=4cm, minimum height=1cm, text centered, draw=black, fill=yellow!30},
+	decision/.style={diamond, minimum width=3cm, minimum height=0.7cm, text centered, draw=black, fill=green!30, aspect=1.5   },
+	startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30},
+	every ->/.style={ultra thick,>=stealth}
+}
+
+\newcommand{\eerstefc}{
+	
+	\begin{tikzpicture}[node distance=0.4cm]
+		\node (start) [startstop] {Start};
+		\node (globaal) [process, below =of start] {Initialisatie teller, eindgetal};
+		\node (setup) [andSetup, below = of globaal]{Zet: COL3-pin en ROW3-pin op output };
+		
+		\node [draw, text width=4cm, align=center, yshift=-0.5cm] (input) [io, below =of setup]{Voer de waarde van het eindgetal in};
+		
+		\node (Match) [decision, below =of input,text width=4cm, align=center] {
+			 (teller $<$ aantal)};
+		\node (LEDAan) [process, below =of Match] {Led aan};
+		\node (wachtA) [process, below =of LEDAan ] {wacht 500ms};
+		\node (LEDUit) [process, below =of wachtA] {Led uit};
+		\node (wachtU) [process, below =of LEDUit ] {wacht 500ms};        
+		\node (tellerPlus) [process, below =of wachtU] {teller++};
+		\node (stop) [startstop,below = of tellerPlus] {Einde loop};
+		
+		\node[
+		draw,
+		dashed,
+		inner sep=12pt,
+		inner xsep=	80pt,
+		fit={(input) (stop)},
+		] (fit) {};
+		\node[below right, inner sep=2pt] at (fit.north west) {\small{\textbf{Arduino loop}}};
+		
+		\draw [->,ultra thick] (start) -- (globaal);
+		\draw [->,ultra thick] (globaal) -- (setup);
+		\draw [->,ultra thick] (setup) -- (input);
+		\draw [->,ultra thick] (input) -- (Match);
+		
+		\draw [->,ultra thick]  (Match) -- node [anchor=west]{ja}(LEDAan);
+		
+		\draw [->,ultra thick] (tellerPlus.east)  -- ++(1.5,0) |- (input.east);
+		\draw [->,ultra thick]  (Match.west)  -- +(-1.5,0) |- node[pos=0, anchor=south]{nee} (stop);
+		\draw [->,ultra thick] (setup) -- (input);
+		\draw [->,ultra thick] (input) -- (Match);
+		\draw [->,ultra thick] (Match) -- (LEDAan);
+		\draw [->,ultra thick] (LEDAan) -- (wachtA);
+		\draw [->,ultra thick] (wachtA) -- (LEDUit);
+		\draw [->,ultra thick] (LEDUit) -- (wachtU);
+		\draw [->,ultra thick] (wachtU) -- (tellerPlus);
+	\end{tikzpicture}
+
+}
+
+\newcommand{\randomfc}{
+	\begin{tikzpicture}[node distance=0.4cm]
+	    \node (start) [startstop] {Start};
+	    \node (globaal) [process, below =of start] {Adafruit\_Microbit\_Matrix display};
+    	\node (setup) [andSetup, below = of globaal]{initialiseer: de Seriele poort,
+    	display en randomSeed };
+    
+	%	\node (globaal) [process, below =of start] {Adafruit_Microbit_Matrix display};
+	
+		\node (random) [process, below =of setup,yshift=-10pt] {genereer een random getal};
+		 \node [draw, text width=4cm, align=center, yshift=-0.5cm] (output) [io, below =of random]{Voer de decimale waarde.};
+    	\node [draw, text width=4cm, align=center, yshift=-0.5cm] (input) [io, below =of output]{Print "Wat is het decimale getal"};
+
+
+    	\node (Omzet) [process, below =of input] {Zet de ingelezen waarde om naar een integer};
+      	\node (Verg) [decision, below =of Omzet,text width=4cm, align=center] {
+    		(random getal $=$ ingelezen getal)};
+ %   	\node (B) [process, below left=1.5cm and 1cm of Verg, draw] {Node B};
+    	\node (Fout) [process, below left =2cm and 0.2cm of Verg] {Helaas, probeer het nog een keer};    	
+    	\node (Goed) [process, right =4cm of Fout] {Goed gedaan};
+    	
+    	\node[
+    	draw,
+    	dashed,
+    	inner sep=12pt,
+    	inner xsep=	70pt,
+    	xshift=55pt,
+    	yshift= -5pt,
+    	fit={(random) (Fout)},
+    	] (fit) {};
+    	\node[below right, inner sep=2pt] at (fit.north west) {\small{\textbf{Arduino loop}}};
+    	
+     	\draw [->,ultra thick] (start) -- (globaal);
+    	\draw [->,ultra thick] (globaal) -- (setup);
+    	\draw [->,ultra thick] (setup) -- (random);
+      	\draw [->,ultra thick] (random) -- (output);
+         \draw [->,ultra thick] (output) -- (input);  	
+    	\draw [->,ultra thick] (input) -- (Omzet);
+        \draw [->,ultra thick] (Omzet) -- (Verg);  	
+         \draw [->,ultra thick] (Verg) -| node [anchor=south] {Nee}(Fout);    	
+         \draw [->,ultra thick] (Verg) -| node [anchor=south] {Ja}(Goed);   
+          	
+	\end{tikzpicture}
+}
+
+\newcommand{\derdefc}{
+	\begin{tikzpicture}[node distance=0.4cm]
+		    \node (start3) [startstop] {Start};
+		    \node (globaal3) [process, below =of start3] {Adafruit\_Microbit\_Matrix display};
+		    \node (setup3) [andSetup, below = of globaal3]{initialiseer: de Seriele poort, 
+		    	display en randomSeed };
+	\end{tikzpicture}
+	}
