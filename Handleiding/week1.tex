@@ -1,7 +1,7 @@
 \chapter{Opdracht 1\\  \small (Introductie in de Arduino omgeving (week 1 en 2)).}
 \label{chap:intr}
 
-Hierbij wordt er van uitgegaan dat een werkende Arduino omgeving aanwezig is en bijvoorbeeld het programmaatje \texttt{\textbf{blink}} zoals in listing \ref{lst:blink} al een keer gerund heeft.
+Hierbij wordt er van uitgegaan dat een werkende Arduino omgeving aanwezig is, is deze niet aanwezig dan is een beschrijving in appendix \ref{chap:omgeving} te vinden. Verder wordt er vanuit gegaan dat het programmaatje \texttt{\textbf{blink}} zoals in listing \ref{lst:blink} al een keer gerund heeft.
 
 
 Als eerste volgt een korte uitleg aan de hand van het programma \texttt{\textbf{blink}} hoe een Arduino programma in elkaar zit en een korte beschrijving van een paar eigenschappen van de microbit pinnen. Verder zijn er een aantal opdrachten.
@@ -67,13 +67,12 @@ De \textcolor{BurntOrange}{oranje gekleurde functies} zijn geen deel van de taal
 Als eerst zal een korte algemene uitleg gegeven worden over het aansturen van een LED, waarna de uitleg volgt in het geval van Listing \ref{lst:blink} besproken wordt.
 \paragraph{Het aansturen van een LED:}
 Een microcontroller heeft verschillende pinnen die kunnen worden gebruikt als ingangen (input) of uitgangen (output). 
-Om een LED aan te sturen wordt vaak de plus-pin van de LED op één van de microcontroller pinnen gezet, de andere pin via een weerstand verbonden met de min. Figuur \ref{fig:exLd} laat zien hoe een externe LED aangesloten is op de micro:kit. De software om de LED  aan te sturen wordt gedaan in Listing \ref{lst:extLd1}.
+Om een LED aan te sturen wordt vaak de plus-pin van de LED op één van de microcontroller pinnen gezet, de andere pin via een weerstand verbonden met de min. Figuur \ref{fig:exLd} laat zien hoe een externe LED aangesloten is op de micro:kit. De software om de LED  aan te sturen wordt gedaan in Listing \ref{lst:extLd1}.Hierbij is de externe LED aangesloten op poortnummer 8.
 \begin{figure}[H]
-	
 	\centering
 	\begin{center} 	
 		\begin{subfigure}[b]{0.43\textwidth}
-			\includegraphics[width=0.75\textwidth]{figuren/externeLedCr}
+			\includegraphics[width=0.65\textwidth]{figuren/externeLedCr}
 			\caption{Een externe led aangesloten op P08 }
 			\label{fig:exLd}
 			
@@ -99,7 +98,8 @@ void loop() {
 		\label{fig:vbExtld}
 	\end{center}	
 \end{figure}
-De externe LED is aangesloten op poortnummer 8.
+
+De werking van het programma is als volgt.
 \begin{enumerate}
 	\item In de \textcolor{arduinoGreen}{setup}() wordt dit poortnummer op output gezet,\\  (\textcolor{arduinoOrange}	{pinMode} (externeLed,  \textcolor{arduinoBlue}{OUTPUT})); 
 \item In de \textcolor{arduinoGreen}{loop}() wordt:
@@ -111,10 +111,13 @@ De externe LED is aangesloten op poortnummer 8.
 \end{enumerate} 
 \end{enumerate}
  
-\paragraph{De LED bij het blink programma in Listing \ref{lst:blink}:} is een onderdeel van een matrix, zoals in figuur \ref{fig:ledmtx2} wordt weergegeven.
+\subsection{Werken met de LED matrix}
+
+Bij het blink programma in Listing \ref{lst:blink} wordt een LED aangestuurd dat een onderdeel is van de LED-matrix. De aangestuurde LED \textcolor{blue}{D2} is aangesloten op de pinnen \textcolor{green}{4} en \textcolor{green}{21}  aansluitingen van de LED-matrix wordt in figuur \ref{fig:ledmtx2} weergegeven.
+
 
 \begin{minipage}{\linewidth}
-	\begin{wrapfigure}[25]{r}{0.6\textwidth}
+	\begin{wrapfigure}[23]{r}{0.6\textwidth}
 		\vspace{-15pt}
 		\begin{center}
 			\centering
@@ -126,7 +129,7 @@ De externe LED is aangesloten op poortnummer 8.
 		\label{fig:ledmtx2}
 	\end{wrapfigure}
 	
-~\vspace{5mm}\\
+~\vspace{2mm}\\
 	Om de LED  (\img{figuren/diodeIc.png}) D2 aan te zetten, zou een elektrische stroom moeten lopen van  pin  \textcolor {Green}{21} door LED D2 naar pin \textcolor{Green}{4}.
 	Dit kan voor elkaar verkregen worden door als eerst beide pinnen op output te zetten:\\
 	\lstinline|	pinMode(4, OUTPUT);|\\ \lstinline|	pinMode(21, OUTPUT);|\\
@@ -136,7 +139,7 @@ De externe LED is aangesloten op poortnummer 8.
 \end{minipage}
 
 
-\section{Het aanzetten van meerdere ledjes in de matrix.}
+\subsection{Het aanzetten van meerdere ledjes in de matrix.}
 
 \begin{enumerate}
 	
@@ -159,7 +162,7 @@ Je ziet nu dat de ‘aan’ tijd langer is.
 
 \end{enumerate}
 
-\subsection{De matrix programmeren met behulp van de Adafruit library}
+\section{De matrix programmeren met behulp van de Adafruit library}\label{sec:matrix}
 
 De firma Adafruit heeft voor de micro:bit een library gemaakt waarin de LED matrix een component is, hierbij worden 5 getallen gebruikt die elk een rij voorstelt. Verder zijn er verschillende methode (functies) die gebruikt kunnen kunnen worden.
 
@@ -217,15 +220,14 @@ void loop() {
 	Serial.println(teller);
 	delay(1000);
 	teller++;
-}	
-	
+}
 \end{lstlisting}
 
 
 Open de seriële monitor(Tools$\rightarrow$Serial Monitor) of (druk \colorbox{mygray}{\textbf{Ctrl + Shift + M}}) of klik op \img{figuren/ardIcMo.png}. DE monitor verschijn op de output, zoals te zien is in figuur \ref{fig:arser}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\captionsetup{justification=centering}
-	\includegraphics[width=0.6 \linewidth]{figuren/serial}
+	\includegraphics[width=0.5 \linewidth]{figuren/serial}
 	\centering
 	\caption{Instellingen van de seriële monitor.}
 	\label{fig:arser}
@@ -239,7 +241,7 @@ Zorg dat de ingestelde snelheid overeen komt met de instelling \textcolor{BurntO
 
 \paragraph{Opdracht Seriële communicatie:} 
 Lees via de seriële poort een getal in en laat een LED het aantal keren knipperen zoals het ingelezen getal. Lees hierna opnieuw een getal in, etc...
-\begin{figure}[h!]
+\begin{figure}[H]
 	\captionsetup{justification=centering}
 	\centering
 	\eerstefc
@@ -251,7 +253,7 @@ De flowchart van dit programma wordt weergegeven in figuur \ref{fig:flowchart1}
 
 \paragraph{Opdracht Het binaire getal:} 
 Bij deze opdracht wordt een random getal tussen de 0 en de 31 gekozen, die vervolgens op de middelste rij van de led-matrix geplaatst wordt. De gebruiker moet binnen 10 seconden raden wat het getal is. De flowchart van het programma wordt in figuur \ref{fig:flowchart2} weergegeven.
-\begin{figure}[h!]
+\begin{figure}[H]
 	\captionsetup{justification=centering}
 	\centering
 	\randomfc
