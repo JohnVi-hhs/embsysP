@@ -1,5 +1,4 @@
 #include <LSM303AGR_ACC_Sensor.h>
-#include <LSM303AGR_MAG_Sensor.h>
 
 
 #define DEV_I2C Wire1   // Wire1 is voor de interne I2C bus 

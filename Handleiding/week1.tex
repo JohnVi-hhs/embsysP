@@ -1,10 +1,19 @@
-\chapter{Opdracht 1\\  \small (Introductie in de Arduino omgeving (week 1 en 2)).}
+\chapter{Opdracht 1\\  \small (Introductie in de Arduino omgeving (week 10 en 11)).}
 \label{chap:intr}
 
-Hierbij wordt er van uitgegaan dat een werkende Arduino omgeving aanwezig is, is deze niet aanwezig dan is een beschrijving in appendix \ref{chap:omgeving} te vinden. Verder wordt er vanuit gegaan dat het programmaatje \texttt{\textbf{blink}} zoals in listing \ref{lst:blink} al een keer gerund heeft.
+Hierbij wordt er van uitgegaan dat een werkende Arduino omgeving aanwezig is, is deze niet aanwezig dan is een beschrijving in appendix \ref{chap:omgeving} te vinden hoe deze te installeren is. Verder wordt er vanuit gegaan dat het programmaatje \texttt{\textbf{blink}} zoals in listing \ref{lst:blink} al een keer gerund heeft.
 
 
-Als eerste volgt een korte uitleg aan de hand van het programma \texttt{\textbf{blink}} hoe een Arduino programma in elkaar zit en een korte beschrijving van een paar eigenschappen van de microbit pinnen. Verder zijn er een aantal opdrachten.
+Als eerste volgt een korte uitleg aan de hand van het programma \texttt{\textbf{blink}} hoe een Arduino programma in elkaar zit en een korte beschrijving van een paar eigenschappen van de microbit pinnen en de LED-matrix. Verder zijn er een aantal opdrachten. Deze zijn te vinden bij:
+
+\begin{itemize}
+	\item Hoofdstuk \ref{sect:mulLED} . Het aanzetten van meerdere LEDs\textbf{ zonder}\\ de \texttt{Adafruit\_Microbit\_Matrix } op bladzijde \pageref{sect:mulLED}
+	\item Het aanzetten van meErdere LEDs met de \texttt{Adafruit\_Microbit\_Matrix } op bladzijde \pageref{blz:opdrmLEDSmatrix}
+	\item Het aantal keren laten knipperen van de LED aan de hand van een ingevoerde waard (bladzijde \pageref{blad:aantalknipper} )
+	\item Het raden van een binaire getal op bladzijde \pageref{blz:bineairGetal}
+	\item Het maken van een looplicht bladzijde  \pageref{opdr:loppl}
+	\item Het besturen van de looplicht met de accelerator sensor op bladzijde \pageref{opdr:accSens}.
+\end{itemize} 
 
 
 \section{ Hoe zit een Arduino programma in elkaar?}\label{sec:blink}
@@ -139,7 +148,7 @@ Bij het blink programma in Listing \ref{lst:blink} wordt een LED aangestuurd dat
 \end{minipage}
 
 
-\subsection{Het aanzetten van meerdere ledjes in de matrix.}
+\subsection{Het aanzetten van meerdere ledjes in de matrix.}\label{sect:mulLED}
 
 \begin{enumerate}
 	
@@ -201,7 +210,7 @@ void loop() {
 }
 \end{lstlisting}
 
-\paragraph{Opdracht: }Pas listing \ref{lst:ledmtx} zodanig aan, zodat alleen de LEDs D2, D6 en D21 knipperen.
+\paragraph{Opdracht: }Pas listing \ref{lst:ledmtx} zodanig aan, zodat alleen de LEDs D2, D6 en D21 knipperen.\label{blz:opdrmLEDSmatrix}
 
 
 \section{Het gebruik van de seriële poort.}
@@ -239,7 +248,7 @@ Zorg dat de ingestelde snelheid overeen komt met de instelling \textcolor{BurntO
 
 %Het programma in Listing \ref{lst:serial}  drukt de waarde van de teller af.\\
 
-\paragraph{Opdracht Seriële communicatie:} 
+\paragraph{Opdracht Seriële communicatie:} \label{blad:aantalknipper}
 Lees via de seriële poort een getal in en laat een LED het aantal keren knipperen zoals het ingelezen getal. Lees hierna opnieuw een getal in, etc...
 \begin{figure}[H]
 	\captionsetup{justification=centering}
@@ -251,7 +260,7 @@ Lees via de seriële poort een getal in en laat een LED het aantal keren knipper
 \end{figure}
 De flowchart van dit programma wordt weergegeven in figuur \ref{fig:flowchart1}
 
-\paragraph{Opdracht Het binaire getal:} 
+\paragraph{Opdracht Het binaire getal:} \label{blz:bineairGetal}
 Bij deze opdracht wordt een random getal tussen de 0 en de 31 gekozen, die vervolgens op de middelste rij van de led-matrix geplaatst wordt. De gebruiker moet binnen 10 seconden raden wat het getal is. De flowchart van het programma wordt in figuur \ref{fig:flowchart2} weergegeven.
 \begin{figure}[H]
 	\captionsetup{justification=centering}

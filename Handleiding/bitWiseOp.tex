@@ -150,7 +150,7 @@ void loop() {
 Op regel 5 wordt een matrix component aangemaakt. Het tonen van de matrix wordt met de show functie gedaan (regel 16 en en 26).
 
 \begin{enumerate}
-	\item Open voorbeeldcode \texttt{\textit{matrixloopl.ino}} of kopieer listing \ref{lst:matrixaan} in een nieuwe arduino omgeving en voer deze uit.\\
+	\item Download de  \href{https://github.com/JohnVi-hhs/embsysP/tree/main/voorbeelden/matrixloopl.ino}{voorbeeldcode van GitHub} of van brightspace of kopieer listing \ref{lst:matrixaan} in een nieuwe arduino omgeving en voer deze uit.\\
 	Probeer de uitvoer te verklaren.
 
 \item Maak een functie \texttt{void \textit{zetLedAan}(unint8\_t rij,uint8\_t kolom);} die de LED op kolom en rij aanzet. Maak hierbij gebruik van de bitwise operator \textbar ~ zoals besproken tijdens de les.
@@ -165,10 +165,10 @@ Op regel 5 wordt een matrix component aangemaakt. Het tonen van de matrix wordt 
 \end{enumerate}
 
 \textbf{Upload het resultaat op blackboard.}
-\end{enumerate}
+\end{enumerate}\label{opdr:loppl}
 \item Maak een looplicht dat gaat over alle 5 de rijen van de matrix zoals figuur \ref{fig:loopl} laat zien.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\captionsetup{justification=centering}
 \includegraphics[width=0.6 \linewidth]{figuren/looplicht}
 \centering
@@ -185,6 +185,73 @@ Doe dit tot en met de laatste rij en begin vervolgens weer op de eerste rij, zoa
 \textbf{Upload het resultaat op blackboard.}
 \end{enumerate}
 
-\paragraph{Challendge opdracht}
+\paragraph{Challendge opdracht}\label{opdr:accSens}
 
-Op de micro:bit zitten verschillende sensoren. Één van de sensoren is een 
+Op de micro:bit zitten verschillende sensoren. Één van de sensoren is een accelerator.
+Het programma in listing\ref{lst:acc} toont de x,y en z waarde van de accelerator sensor.
+\begin{enumerate}
+
+	\item Download  listing \ref{lst:acc} van \href{https://github.com/JohnVi-hhs/embsysP/tree/main/voorbeelden/accelerator.ino}{ GitHub} of van brightspace of kopieer listing \ref{lst:acc} in een nieuwe arduino omgeving en voer deze uit.
+	\item Pas het programma zodanig aan, zodat de LED in de richting beweegt, waarin micro:kit gehouden wordt.
+
+	\end{enumerate}
+
+\begin{lstlisting}[caption={Looplicht van de bovenste rij.},label={lst:acc}]
+#include <LSM303AGR_ACC_Sensor.h>
+
+#define DEV_I2C Wire1   // Wire1 is voor de interne I2C bus 
+#define LED ROW1 
+
+
+// Nodig voor de accelerator 
+LSM303AGR_ACC_Sensor Acc(&DEV_I2C);
+
+
+const int COL1 = 4;   
+const int ROW1 = 21;   
+
+void setup() {
+	// Led.
+	
+	pinMode(COL1, OUTPUT);
+	digitalWrite(COL1, LOW);
+	pinMode(ROW1, OUTPUT);
+	
+	// Initialisatie van de serieele.
+	Serial.begin(9600);
+	
+	// Initialisate I2C bus (wordt veel gebruikt om sensors).
+	DEV_I2C.begin();
+	
+	// Initialisatie van de accelarator.
+	Acc.begin();
+	Acc.Enable();
+	
+	uint8_t a;
+	Acc.IO_Read(&a,0x0F,1);
+	Serial.print("Ik ben: ");
+	Serial.println(a);
+}
+
+void loop() {
+	// Led blinking.
+	digitalWrite(LED, HIGH);
+	delay(250);
+	digitalWrite(LED, LOW);
+	delay(250);
+	
+	// Lees de accelerometer van de LSM303AGR uit.
+	int32_t accelerometer[3];
+	Acc.GetAxes(accelerometer);
+	
+	// Output data.
+	Serial.print("| Acc[x/y/z] ");
+	Serial.print(accelerometer[0]);
+	Serial.print(" ");
+	Serial.print(accelerometer[1]);
+	Serial.print(" ");
+	Serial.print(accelerometer[2]);
+	Serial.println(" |");
+}
+\end{lstlisting}
+
