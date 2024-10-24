@@ -8,11 +8,11 @@ Als eerste volgt een korte uitleg aan de hand van het programma \texttt{\textbf{
 
 \begin{itemize}
 	\item Hoofdstuk \ref{sect:mulLED} . Het aanzetten van meerdere LEDs\textbf{ zonder}\\ de \texttt{Adafruit\_Microbit\_Matrix } op bladzijde \pageref{sect:mulLED}
-	\item Het aanzetten van meErdere LEDs met de \texttt{Adafruit\_Microbit\_Matrix } op bladzijde \pageref{blz:opdrmLEDSmatrix}
+	\item Het aanzetten van meerdere LEDs met de \texttt{Adafruit\_Microbit\_Matrix } op bladzijde \pageref{blz:opdrmLEDSmatrix}
 	\item Het aantal keren laten knipperen van de LED aan de hand van een ingevoerde waard (bladzijde \pageref{blad:aantalknipper} )
-	\item Het raden van een binaire getal op bladzijde \pageref{blz:bineairGetal}
+	\item Het raden van een binair getal op bladzijde \pageref{blz:bineairGetal}
 	\item Het maken van een looplicht bladzijde  \pageref{opdr:loppl}
-	\item Het besturen van de looplicht met de accelerator sensor op bladzijde \pageref{opdr:accSens}.
+	\item Het besturen van het looplicht met de accelerometer sensor op bladzijde \pageref{opdr:accSens}.
 \end{itemize} 
 
 
@@ -51,9 +51,9 @@ void loop() {
 Arduino noemt een dergelijk programma een schets (of ‘sketch’). 
 Hierin zijn twee functieblokken herkenbaar: \texttt{{\textcolor{arduinoBlue}{void}} \textcolor{arduinoGreen}{setup}(){} en  \textcolor{arduinoBlue}{void} \textcolor{arduinoGreen}{loop}(){}}
 
-Wat in het setup blok tussen de accolades {} staat, wordt éénmalig tijdens het opstarten uitgevoerd.
+Wat in het setup blok tussen de accolades \{\} staat, wordt éénmalig tijdens het opstarten uitgevoerd.
 
-Als het setup blok klaar is, wordt het loop blok gestart. De code in het loop blok wordt continue herhaald, in principe duizenden keren per seconde. Het programma eindigt dus nooit!
+Als het setup blok klaar is, wordt het loop blok gestart. De code in het loop blok wordt continue herhaald, in principe duizenden keren per seconde. Het programma eindigt dus nooit, je kunt het niet stoppen!
 
 Deze structuur (een opstartblok en een blok dat herhaald wordt) geldt voor alle type microcontrollers!
 
@@ -122,7 +122,7 @@ De werking van het programma is als volgt.
  
 \subsection{Werken met de LED matrix}
 
-Bij het blink programma in Listing \ref{lst:blink} wordt een LED aangestuurd dat een onderdeel is van de LED-matrix. De aangestuurde LED \textcolor{blue}{D2} is aangesloten op de pinnen \textcolor{green}{4} en \textcolor{green}{21}  aansluitingen van de LED-matrix wordt in figuur \ref{fig:ledmtx2} weergegeven.
+Bij het Blink programma in Listing \ref{lst:blink} wordt een LED aangestuurd dat een onderdeel is van de LED-matrix. De aangestuurde LED \textcolor{blue}{D2} is aangesloten op de pinnen \textcolor{green}{4} en \textcolor{green}{21}  aansluitingen van de LED-matrix wordt in figuur \ref{fig:ledmtx2} weergegeven.
 
 
 \begin{minipage}{\linewidth}
@@ -159,7 +159,7 @@ Bij het blink programma in Listing \ref{lst:blink} wordt een LED aangestuurd dat
 \end{enumerate}
 
 Je ziet nu dat de ‘aan’ tijd langer is.
-\item Laat nu ook LED D6 mee Knipperen (LED D2 en D6 knipperen).
+\item Laat nu ook LED D6 mee knipperen (LED D2 en D6 knipperen).
 
 \item Laat nu de LEDs D2 en D12 knipperen.
 
@@ -215,7 +215,7 @@ void loop() {
 
 \section{Het gebruik van de seriële poort.}
 
-Je kunt de seriële poort gebruiken om informatie te verzenden of te ontvangen van je laptop b.v. om te ‘debuggen’, oftewel controleren of je programma doet wat je er van verwacht. In The Challenge kun je het gebruiken om sensordata naar je PC te sturen.In het voorbeeldprogramma van Listing \ref{lst:serial} wordt de waarde van de teller steeds over de seriële lijn verstuurd.
+Je kunt de seriële poort gebruiken om informatie te verzenden of te ontvangen van je laptop b.v. om te ‘debuggen’, oftewel controleren of je programma doet wat je er van verwacht. In The Challenge kun je het gebruiken om sensordata naar je PC te sturen. In het voorbeeldprogramma van Listing \ref{lst:serial} wordt de waarde van de teller steeds over de seriële lijn verstuurd.
 
 \begin{lstlisting}[caption= Een LED matrix demo,label={lst:serial},firstnumber=1]		
 	
@@ -233,7 +233,7 @@ void loop() {
 \end{lstlisting}
 
 
-Open de seriële monitor(Tools$\rightarrow$Serial Monitor) of (druk \colorbox{mygray}{\textbf{Ctrl + Shift + M}}) of klik op \img{figuren/ardIcMo.png}. DE monitor verschijn op de output, zoals te zien is in figuur \ref{fig:arser}
+Open de seriële monitor(Tools$\rightarrow$Serial Monitor) of (druk \colorbox{mygray}{\textbf{Ctrl + Shift + M}}) of klik op \img{figuren/ardIcMo.png}. In de 'Serial Monitor' verschijnt de output van je programma, zoals te zien is in figuur \ref{fig:arser}
 \begin{figure}[H]
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.5 \linewidth]{figuren/serial}
