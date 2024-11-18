@@ -1,4 +1,4 @@
-\chapter{Opdracht 2\\  \small (Het inlezen van fysieke eigenschappen(week 12 en 13))} \label{sec:but}
+\chapter{Opdracht 2\\  \small (Het inlezen van fysieke eigenschappen(week 12 en 13))} \label{sec:invoer}
 
 
 Bij deze opdracht lezen we de stand van de schakelaars die we vervolgens gebruiken om een teller op en af te laten tellen.
@@ -75,7 +75,7 @@ De \texttt{serial plotter} bepaalt zelf de kleuren van de variabele en de waarde
 Doordat de waarde van de Y-as bepaald wordt door arduino, kan deze verspringen. Het verspringen van de Y-as kan voorkomen worden door een extra variabele te nemen met een bovengrens, in dit geval is dat 1200.\\
 Voeg een bovengrens variabele toe aan listing \ref{lst:butplot} zodat de Y-as gelijk begonnen wordt een maximum van 1200.
 
-\item 
+\item \label{opd:schakelaar}
 Pas de opdracht van \ref{sec:but} \ref{butNr} zodanig aan zodat op de \texttt{Serial plotter} te zien is wanneer een knop is ingedrukt. Zoals weergegeve in figuur \ref{fig:plotBut}.\\ \textbf{TIP}: Bedenk dat \textit{1 + 2 = 3}.
 \begin{figure}[H]
 	\captionsetup{justification=centering}
@@ -84,6 +84,31 @@ Pas de opdracht van \ref{sec:but} \ref{butNr} zodanig aan zodat op de \texttt{Se
 	\caption{Het plotten van de stand van de schakelaars met een ondergrens.}
 	\label{fig:plotBut}
 \end{figure}
+
+\item Op de microbit zit ook een toch sensor zoals in figuur \ref{fig:microbitFront} wordt weergeven en is aangesloten op pin 26. De touch sensor is hierbij zo geconfigureerd dat het eigenlijk een schakelaar is die en 0 of een 1 afgeeft.
+
+Echter het lijkt erop alsof deze niet reageert op het aanraken. Wat helpt is indien je de sensor aanraakt met één van je vingers, met de duim de GND aanraakt, Een andere methode is om je vinger nat te maken, dan wordt oon een 0 afgegeven, zoals te zien is in figuur \ref{fig:plotLog} waar de toch schakelaar de bovenste lijn voorstelt.
+
+\begin{figure}[H]
+	\centering
+
+		\begin{subfigure}[b]{0.35\textwidth}
+			\includegraphics[width=0.95\textwidth]{figuren/microbitFront}
+			\caption{Plaats van de touch sensor }
+			\label{fig:microbitFront}
+		\end{subfigure}
+\begin{subfigure}[b]{0.64\textwidth}
+	\includegraphics[width=0.95\textwidth]{figuren/plotMetLogo}
+	\caption{Het plotten van de inputs }
+	\label{fig:plotLog}
+	
+\end{subfigure}		
+		\captionsetup{justification=centering}
+	\caption{De touch sensor }
+		\label{fig:Logo}
+
+\end{figure}
+Breid de opdracht van \ref{opd:schakelaar} uit zodat ook de waarde die de toch schakelaar heeft, wordt weergegeven bij het plotten, zoals te zien is in figuur \ref{fig:plotLog}
 \end{enumerate}
 
 \section{Een denderende schakelaar.}
@@ -102,7 +127,7 @@ Indien een schakelaar wordt ingedrukt sluit deze bijna nooit in 1 keer, maar vee
 waar te zien is dat bij het indrukken en loslaten van het knopje de schakelaar 'stuitert'. 
 Één van de eenvoudigste manieren om dit op te lossen is door even te wachten (een paar milliseconden) en vervolgens te controleren of de knop nog steeds is ingedrukt. Dit wordt weergegeven in listing \ref{lst:denderBut}
 %\begin{lstlisting}[style=myArduino, caption= Omgaan met een denderende schakelaar.,label={lst:denderBut}]
-\newpage
+%\newpage
 \begin{lstlisting}[caption= Omgaan met een denderende schakelaar.,label={lst:denderBut}]
 	const int knopA = 5;     // Knop A is aangesloten op poortnummer 5
 	const int knopB = 11;    // Knop B is aangesloten op poortnummer 11
@@ -207,7 +232,7 @@ Bestudeer de code en kijk hoe het programma werkt. Het is de bedoeling dat na el
 	\item Wat is het nut van het statement \textcolor{arduinoOrange}{delay}(50) op regel 31?\hrulefill
 	\item Wat is het resultaat indien de outputpin COL1 van listing \ref{lst:changeBut} op \textcolor{arduinoBlue}{HIGH} gezet wordt?	
 	\item Breid listing \ref{lst:changeBut} uit, zodat de teller met 1 verlaagd wordt indien met knopB een toestand verandering van 3 naar 4 plaatsvindt.\\
-	\textbf{Upload deze opgave op blackboard.}
+	\textbf{Upload deze opgave op brightspace.}
 	
 \end{enumerate}
 
@@ -224,7 +249,7 @@ De Microbit heeft 21 pinnen (aansluitingen) die voor allerlei toepassingen bruik
 Hierbij wordt aangegeven welke onderdelen van de microbit ook extern zijn te gebruiken. Bij de pinnen waarbij \fcolorbox{black}{Apricot}{ANALOG IN} staat, kan een externe analoge signaal van b.v. een externe sensor aangesloten worden. De pinnen genaamd \fcolorbox{black}{NavyBlue}{\textcolor{White}{P..}} zijn de pinnummers. In de Arduino IDE kan je die P weglaten en hoef je alleen het nummer op te geven, 0 t/m 20. Uitgebreidere informatie over de pinnen is te vinden op de website \href{https://tech.microbit.org/hardware/edgeconnector/}{tech.microbit.org/hardware/edgeconnector/}.\\
 %\newpage
 
-\subsection{Het lezen van externe signalen met de microbit.}
+\subsection{Het lezen van externe analoge signalen met de microbit.}
 
 Stel op PIN P0 willen we een externe analoge sensor aansluiten. Voor de spanningswaarde die de sensor levert willen we een digitale waarde weten. 
 Dit kan in de Arduino omgeving gedaan worden me het statement:\\
@@ -236,6 +261,7 @@ int sensorwaarde = \textcolor{arduinoOrange}{analogRead}(A0);
 	\item In programma listing \ref{lst:analogInp} wordt het analoge signaal van de externe PIN P0 gelezen.
 	%\begin{lstlisting}[style=myArduino,numbers=none ,caption= inlezen via een analoog signaal.,label={lst:analogInp}]
 	\begin{lstlisting}[numbers=none ,caption= inlezen via een analoog signaal.,label={lst:analogInp}]
+	
 		void setup() {  
 			pinMode(0, INPUT); 
 			Serial.begin(9600);
@@ -256,14 +282,97 @@ int sensorwaarde = \textcolor{arduinoOrange}{analogRead}(A0);
 		\item  Maak een nieuw Arduino sketch aan en zet listing \ref{lst:analogInp} erin, Klik vervolgens op \img{figuren/ardIcUpl.png} of druk \colorbox{mygray}{\textbf{Ctrl + U}} om het programma te compileren en naar de Microbit te sturen. 
 		\item Zoek PIN 0 in Figuur \ref{fig:ardPinB}.
 		\item Leg je Microbit op tafel, raak hem niet aan. 
-		\item De Arduino omgeving heeft behalve een Seriële monitor ook een Seriële Plotter. Helaas kan maar één van beide monitor of plotter gebruikt worden. 
-		Indien de Seriële monitor open is, sluit deze dan en open de Seriële Plotter ( Tools $\rightarrow$ Serial Plotter of \colorbox{mygray}{\textbf{Ctrl + shift + L}}).
+		\item Gebruik de Seriële Plotter om de waarde van de variabele \texttt{\textit{sensorValue}}  te laten zien.
+		
 		Raak met je vinger het gouden vlakje van pin 0 aan en kijk in de Seriële Plotter wat er gebeurt.
 		\item Tussen welke waardes op de linker as liggen de meetwaardes? \hrulefill \\	
 		\footnotesize{\texttt{\textit{(Bij mij kwam deze uit tussen de 1000 zonder aanraken en de 750 )}} }
 		
 	\end{enumerate}
 	
+	\item De LEDs op de microbit zijn via een truck ook iets wat lichtgevoelig. Hierdoor kan een  bepaalde lichtintentietijd gemeten worden. 
+	
+	Om deze te kunnen meten zal de LED als een analoge waarde ingelezen moeten worden. 
+	In figuur \ref{fig:ledD2} 
+
+	\begin{figure}[h!]
+		\centering
+		
+		\begin{subfigure}[b]{0.30\textwidth}
+			\includegraphics[width=0.95\textwidth]{figuren/ledD2}
+			\caption{aansluitschema van LED D2. }
+			\label{fig:ledD2}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.69\textwidth}
+			\includegraphics[width=0.97\textwidth]{figuren/plotled}
+			\caption{Een idicatie van ontvangen licht. }
+			\label{fig:plotLog}
+			
+		\end{subfigure}		
+		\captionsetup{justification=centering}
+		\caption{Een matrix LED als fotodiode?  }
+		\label{fig:Logo}
+	
+	\end{figure}
+	
+	is te zien hoe LED D2 (linkerboven LED van de matrix) is aangesloten. Door nu PIN \textcolor{teal}{4} als een analoge input te definiëren en PIN \textcolor{teal}{21} hoog te maken is er een klein spanningsverschil op PIN 4 te meten.\\
+	
+    Maak een programma waarbij aan de hand van de middelste LED een indicatie verkregen kan worden over de omgevingslicht.
+   
+   \subsection{De challenge opdracht}
+   
+   De micro:bit heeft ook een kompassensor. In listing \ref{lst:kompasInp} wordt de \lstinline|void setup()| en de  \lstinline|void loop()| weergegeven op het kompas uit te lezen. De 
+   	\begin{lstlisting}[numbers=none ,caption= De micro:bit als een kompas,label={lst:kompasInp}]
+   		
+void setup(void) {
+	// Start LED matrix driver
+	pinMode(ROW3, OUTPUT);
+	pinMode(COL3, OUTPUT);
+	digitalWrite(COL3, LOW);
+	
+	// Initialiseer I2C bus.
+	DEV_I2C.begin();
+	
+	Mag.begin();
+	Mag.Enable();
+	
+	Serial.begin(9600);
+	pinMode(PIN_BUTTON_A, INPUT);
+	// Serial.println("Druk op knopA om te stoppen met kalibreren");
+	
+	Serial.println("");
+	lastDisplayTime = millis();
+	kalibreer();
+}
+
+   		
+void loop(void) {
+	float hoek;
+	hoek=bepaalHoek();
+	if ((millis() - lastDisplayTime) > 1000)  {
+		Serial.print("ondergrens:");
+		Serial.print(-0.5);
+		Serial.print(",");
+		Serial.print("Bovengrens:");
+		Serial.print(361);
+		Serial.print(",");
+		Serial.print("Hoek:");
+		Serial.println(hoek);
+		lastDisplayTime = millis();
+	}
+	delay(10);
+}
+   		
+   		
+\end{lstlisting}
+   
+   
+\end{enumerate}
+	
+
+	
+	
+	\begin{comment}
 	
 	\item Verander he statement  \textcolor{arduinoOrange}{analogRead}(A0); in \textcolor{arduinoOrange}{digitalRead}(A0); Klik vervolgens op \img{figuren/ardIcUpl.png} of druk \colorbox{mygray}{\textbf{Ctrl + U}} om het programma te compileren en naar de Microbit te sturen. Raak met je vinger het gouden vlakje van pin 0 aan en kijk in de Seriële Plotter wat er gebeurt. 
 	
@@ -295,3 +404,4 @@ int sensorwaarde = \textcolor{arduinoOrange}{analogRead}(A0);
 	}}}
 \end{minipage}
 \normalsize
+\end{comment}

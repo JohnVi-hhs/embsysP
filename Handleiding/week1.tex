@@ -1,9 +1,16 @@
 \chapter{Opdracht 1\\  \small (Introductie in de Arduino omgeving (week 10 en 11)).}
 \label{chap:intr}
 
-Hierbij wordt er van uitgegaan dat een werkende Arduino omgeving aanwezig is, is deze niet aanwezig dan is een beschrijving in appendix \ref{chap:omgeving} te vinden hoe deze te installeren is. Verder wordt er vanuit gegaan dat het programmaatje \texttt{\textbf{blink}} zoals in listing \ref{lst:blink} al een keer gerund heeft.
+Hierbij wordt er van uitgegaan dat:
+\begin{enumerate}[label=\alph*)]
+	\item Een \hyperref[sec:insArd]{ werkende \ardIDE ~omgeving} aanwezig is.
+	\item De \hyperref[sec:instArdOmg] {\ardIDE ~omgeving geschikt is gemaakt voor de microbit}.
+	\item De \hyperref[sec:insAdafruit]{ adafruit library} geïnstalleerd is.
+\end{enumerate}	 
+	 In appendix \ref{chap:omgeving} is te vinden hoe deze te installeren is.\\
+	 Verder wordt er vanuit gegaan dat het programmaatje \texttt{\textbf{blink}} zoals in listing \ref{lst:blink} al een keer gerund heeft.
 
-
+\label{chap:tweeVerv}
 Als eerste volgt een korte uitleg aan de hand van het programma \texttt{\textbf{blink}} hoe een Arduino programma in elkaar zit en een korte beschrijving van een paar eigenschappen van de microbit pinnen en de LED-matrix. Verder zijn er een aantal opdrachten. Deze zijn te vinden bij:
 
 \begin{itemize}
@@ -154,7 +161,7 @@ Bij het Blink programma in Listing \ref{lst:blink} wordt een LED aangestuurd dat
 	
 \item In het programma \textit{blink} van listing \ref{lst:blink} knippert de LED met een frequentie van 1 Hz ($\frac{1}{2}$ seconde aan en $\frac{1}{2}$ seconde uit).\\
 \begin{enumerate}
-	\item Wijzig in de schets de eerste \textcolor{BurntOrange}{delay}(500) (regel 17) naar \textcolor{BurntOrange}{delay}(100).
+	\item Wijzig in de schets de eerste \textcolor{BurntOrange}{delay}(500) (regel 17 van Listing \ref{lst:blink}) naar \textcolor{BurntOrange}{delay}(100).
 	\item   Klik op \img{figuren/ardIcUpl.png} of druk \colorbox{mygray}{\textbf{Ctrl + U}} om het programma te compileren en naar de Microbit te sturen.
 \end{enumerate}
 
@@ -164,7 +171,7 @@ Je ziet nu dat de ‘aan’ tijd langer is.
 \item Laat nu de LEDs D2 en D12 knipperen.
 
 \item Laat nu de LEDs D2, D6 en D12.\\ 
-\texttt{Verklaar wat er gebeurt}
+\texttt{Verklaar waarom dit niet eenvoudig lukt en D16 gaat meeknipperen.}
 
 
 %\item Laad nu ook LED D14 mee knipperen. (LED D2, D6, D12 en D14 Knipperen).\\ %\texttt{Verklaar wat er gebeurt}
@@ -210,7 +217,7 @@ void loop() {
 }
 \end{lstlisting}
 
-\paragraph{Opdracht: }Pas listing \ref{lst:ledmtx} zodanig aan, zodat alleen de LEDs D2, D6 en D21 knipperen.\label{blz:opdrmLEDSmatrix}
+\paragraph{Opdracht: }Pas listing \ref{lst:ledmtx} zodanig aan, zodat alleen de LEDs D2, D6 en D12 knipperen.\label{blz:opdrmLEDSmatrix}
 
 
 \section{Het gebruik van de seriële poort.}

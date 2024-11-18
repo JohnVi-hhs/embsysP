@@ -12,14 +12,14 @@ Java en C++ zijn object georiënteerde talen. Daarover leer je meer als je kiest
 
 
 
-\subsection{Het installeren van de Arduino omgeving}
+\subsection{Het installeren van de Arduino omgeving}\label{sec:insArd}
 
 VOER ONDERSTAANDE INSTALLATIE THUIS UIT – DIT DUURT 1,5 UUR!!!
 
 \begin{enumerate}
-	\item Download de Arduino software van \href{https://www.arduino.cc/en/software}{https://www.arduino.cc/en/software}, zoals je kan zien zijn er ook versies voor Linux en de Mac.
+	\item Download de \ardIDE ~software van \href{https://www.arduino.cc/en/software}{https://www.arduino.cc/en/software}, zoals je kan zien zijn er ook versies voor Linux en de Mac.
 	\item  Bevestig alle vragen, klik maar door.
-	\item Bij het het opstarten van arduino zal gevraagd worden om de libary's te updaten. Update de libary's.
+	\item Bij het het opstarten van \ardIDE ~zal gevraagd worden om de libary's te updaten. Update de libary's.
 \end{enumerate}
 Na het opstarten verschijnt het scherm zoals in figuur \ref{fig:arduino_s1} wordt weergegeven.
 
@@ -45,12 +45,12 @@ Als eerste kunnen een aantal instellingen aangepast worden. Ga naar File $\right
 \begin{itemize}
 	\item Indien de Arduino omgeving Engelstalig is, kan deze gewijzigd worden naar het Nederlands. Het is handig om tijdens de installatie de Engelstalige omgeving te gebruiken.
 \end{itemize}
-\subsection{De arduino omgeving geschikt maken voor de microbit.}
+\subsection{De arduino omgeving geschikt maken voor de microbit.}\label{sec:instArdOmg}
 
 De firma \href{https://www.adafruit.com/about}{Adafruit } ontwikkelt diverse componenten voor met name embedded systemen
 die door ieder gebruiker kan worden toegepast en/of geprogrammeerd. Om dit waar te kunnen maken worden veel tutorials ontwikkeld. Zo is er ook een uitgebreide website, om de \href{https://learn.adafruit.com/use-micro-bit-with-arduino}{microbit met de Arduino IDE} te programmeren.
 
-Doordat op de microbit een NRF52 microcontroller zit, zal de betreffende package bij de arduino omgeving bekent moeten worden gemaakt, waarna de betreffende board met deze microcontroller geselecteerd kunnen worden.
+Doordat op de microbit een NRF52 microcontroller zit, zal de betreffende package bij de \ardIDE ~omgeving bekent moeten worden gemaakt, waarna de betreffende board met deze microcontroller geselecteerd kunnen worden.
 \begin{enumerate}
 	\item  Ga naar File $\rightarrow$ Preferences, en zet bij Additional boards manager URLs: de URL  %\texttt{https://sandeepmistry.github.io/arduino-nRF5/package\_nRF5\_boards\_index.json
     {\scriptsize \texttt{https://sandeepmistry.github.io/arduino-nRF5/package\textunderscore nRF5\textunderscore boards\textunderscore index.json}}  zoals in figuur \ref{fig:arduinoPref2} te zien is.\\ 
@@ -115,14 +115,14 @@ In figuur \ref{fig:ardTool4} is te zien dat de microbit op COM7 zit, dit kan bij
    	\label{fig:windowsDef}
    \end{figure}
 Hiermee vraagt Windows toestemming om de USB port te mogen gebruiken.
-\item Haal de voorbeeldcode van blackboard of \href{https://github.com/JohnVi-hhs/embsysP/tree/main/voorbeelden/blink.ino}{download} de laatste versie en plaats deze in je eigen werkdirectory.
+\item Haal de voorbeeldcode van brightspace of \href{https://github.com/JohnVi-hhs/embsysP/tree/main/voorbeelden/blink.ino}{download} de laatste versie en plaats deze in je eigen werkdirectory.
 \item \label{en:blink} Open het voorbeeldprogramma blink.ino (dubbel klik), dat wordt weergegeven in Listing \ref{lst:blink}, compileer en upload naar de micro:bit (klik op de knop \img{figuren/ardIcUpl}). \\
 Als het goed is gaat het linkerboven LEDje van de matrix knipperen. Voor verder uitleg zie hoofdsuk \ref{sec:blink}
 
 
 \end{enumerate}
 
-\subsection{Het installeren van de Adafruit library.}
+\subsection{Het installeren van de Adafruit library.}\label{sec:insAdafruit}
 
 Zodra je complexere zaken wilt aanpakken, heb je een hulplibrary nodig om dingen zoals de interne temperatuursensor, LED-matrix of Bluetooth-verbinding te beheren.
 Om het je makkelijker te maken, heeft Adafruit een wrapper-library geschreven die dit allemaal voor je regelt.
@@ -167,3 +167,5 @@ Om het je makkelijker te maken, heeft Adafruit een wrapper-library geschreven di
 	
 	
 \end{enumerate}
+
+Ga terug naar \hyperref[chap:tweeVerv] {opdracht 1}.
