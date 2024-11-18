@@ -321,8 +321,11 @@ int sensorwaarde = \textcolor{arduinoOrange}{analogRead}(A0);
    
    \subsection{De challenge opdracht}
    
-   De micro:bit heeft ook een kompassensor. In listing \ref{lst:kompasInp} wordt de \lstinline|void setup()| en de  \lstinline|void loop()| weergegeven op het kompas uit te lezen. De 
-   	\begin{lstlisting}[numbers=none ,caption= De micro:bit als een kompas,label={lst:kompasInp}]
+   De micro:bit heeft ook een kompassensor. In listing \ref{lst:kompasInp} wordt de \lstinline|void setup()| en de  \lstinline|void loop()| weergegeven op het kompas uit te lezen. De complete \href{https://github.com/JohnVi-hhs/embsysP/blob/main/voorbeelden/kompasOpdracht.ino}{code} kan gedownload worden van de github.
+   	\begin{lstlisting}[caption= De micro:bit als een kompas,label={lst:kompasInp}]
+#include <LSM303AGR_MAG_Sensor.h>
+
+LSM303AGR_MAG_Sensor Mag(&DEV_I2C);
    		
 void setup(void) {
 	// Start LED matrix driver
@@ -363,10 +366,31 @@ void loop(void) {
 	delay(10);
 }
    		
-   		
+ 
 \end{lstlisting}
-   
-   
+     
+Zoals te zien is, wordt de magneet-sensor aangemaakt in regel 3 van listing \ref{lst:kompasInp} en geïnitialiseerd op regel 14 en 15.
+
+Verder moet de sensor gekalibreerd worden, dit wordt gedaan in de functie op regel 23. De code van de functie is terug te vinden op de github.\\
+
+Het kalibreren van de sensor wordt gedaan door de sensor een paar keer rond te draaien en vervolgens op knop A te drukken.\\
+
+In de loop wordt de waarde van de sensor uitgeprint op de plotter, zoals in figuur \ref{fig:kompas_circle} te zien is.
+\begin{figure}[h!]
+	\captionsetup{justification=centering}
+	\includegraphics[width=0.5 \linewidth]{figuren/kompas_circle}
+	\centering
+	\caption{De micro:bit wordt een keer rondgedraaid.}
+	\label{fig:kompas_circle}
+\end{figure}
+Daar is bij de waarde 0 ongeveer het noorden. Je zult zien dat het niet altijd even nauwkeurig is.
+
+\begin{itemize}
+	\item Download de code en run deze. Laat de waarde door de plotter uit plotten en controleer of het enigszins klopt bijvoorbeeld met een kompas app op je telefoon.
+	\item Breid het programma uit, met de mogelijkheid om opnieuw te kalibreren indien knop B wordt ingedrukt.
+	\item Breid het programma nog verder uit zodat op het display altijd het een lijn is van noord naar zuid.
+\end{itemize}
+
 \end{enumerate}
 	
 

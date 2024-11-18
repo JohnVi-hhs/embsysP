@@ -12,13 +12,8 @@ const float Pi = 3.14159;
 void kalibreer();
 float bepaalHoek();
 
-
 LSM303AGR_MAG_Sensor Mag(&DEV_I2C);
 Adafruit_Microbit microbit;
-
-// The number Pi for calculations.
-
-
 
 int32_t magnetometer[3];
 
@@ -30,21 +25,14 @@ boolean calibrated = false;
 long lastDisplayTime;
 
 
-
-
-
 void setup(void) {
   // Start LED matrix driver
   pinMode(ROW3, OUTPUT);
   pinMode(COL3, OUTPUT);
   digitalWrite(COL3, LOW);
 
- // microbit.begin();
- // microbit.matrix.clear();  // Clear display
-
   // Initialiseer I2C bus.
   DEV_I2C.begin();
-
 
   Mag.begin();
   Mag.Enable();
@@ -55,9 +43,7 @@ void setup(void) {
 
   Serial.println("");
   lastDisplayTime = millis();
-
   kalibreer();
-
 }
 
 void loop(void) {
@@ -76,7 +62,6 @@ void loop(void) {
 }
   delay(10);
 }
-
 
 void kalibreer() {
    while (digitalRead(PIN_BUTTON_A)) {
@@ -104,7 +89,6 @@ float bepaalHoek() {
   x = magnetometer[0];
   y = magnetometer[1];
   z = magnetometer[2];
-
 
   // Change the calibrated values to an expected range.
   x = map(x, MagMinX, MagMaxX, -1023, 1023);
