@@ -317,11 +317,11 @@ int sensorwaarde = \textcolor{arduinoOrange}{analogRead}(A0);
 	
 	is te zien hoe LED D2 (linkerboven LED van de matrix) is aangesloten. Door nu PIN \textcolor{teal}{4} als een analoge input te definiëren en PIN \textcolor{teal}{21} hoog te maken is er een klein spanningsverschil op PIN 4 te meten.\\
 	
-    Maak een programma waarbij aan de hand van de middelste LED een indicatie verkregen kan worden over de omgevingslicht.
+    \textbf{De opdracht:} Maak een programma waarbij aan de hand van de middelste LED een indicatie verkregen kan worden over de omgevingslicht.
    
    \subsection{De challenge opdracht}
    
-   De micro:bit heeft ook een kompassensor. In listing \ref{lst:kompasInp} wordt de \lstinline|void setup()| en de  \lstinline|void loop()| weergegeven op het kompas uit te lezen. De complete \href{https://github.com/JohnVi-hhs/embsysP/blob/main/voorbeelden/kompasOpdracht.ino}{code} kan gedownload worden van de github.
+   De micro:bit heeft ook een kompassensor. Hoe deze kan worden uitgelezen wordt in grove lijnen weergegeven in listing \ref{lst:kompasInp}, hier wordt de \lstinline|void setup()| en\\ de  \lstinline|void loop()| weergegeven. De complete \href{https://github.com/JohnVi-hhs/embsysP/blob/main/voorbeelden/kompasOpdracht.ino}{code} kan gedownload worden van de github.
    	\begin{lstlisting}[caption= De micro:bit als een kompas,label={lst:kompasInp}]
 #include <LSM303AGR_MAG_Sensor.h>
 
@@ -375,7 +375,7 @@ Verder moet de sensor gekalibreerd worden, dit wordt gedaan in de functie op reg
 
 Het kalibreren van de sensor wordt gedaan door de sensor een paar keer rond te draaien en vervolgens op knop A te drukken.\\
 
-In de loop wordt de waarde van de sensor uitgeprint op de plotter, zoals in figuur \ref{fig:kompas_circle} te zien is.
+In de  \lstinline|void loop()| functie wordt de waarde van de sensor uitgeprint op de plotter, zoals in figuur \ref{fig:kompas_circle} te zien is.
 \begin{figure}[h!]
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.5 \linewidth]{figuren/kompas_circle}
@@ -383,12 +383,12 @@ In de loop wordt de waarde van de sensor uitgeprint op de plotter, zoals in figu
 	\caption{De micro:bit wordt een keer rondgedraaid.}
 	\label{fig:kompas_circle}
 \end{figure}
-Daar is bij de waarde 0 ongeveer het noorden. Je zult zien dat het niet altijd even nauwkeurig is.
+Daar wordt bij de waarde 0 ongeveer het noorden weergegeven. Je zult zien dat het niet altijd even nauwkeurig is.
 
 \begin{itemize}
 	\item Download de code en run deze. Laat de waarde door de plotter uit plotten en controleer of het enigszins klopt bijvoorbeeld met een kompas app op je telefoon.
 	\item Breid het programma uit, met de mogelijkheid om opnieuw te kalibreren indien knop B wordt ingedrukt.
-	\item Breid het programma nog verder uit zodat op het display altijd het een lijn is van noord naar zuid.
+	\item Breid het programma verder uit zodat op het LED-display altijd een lijn te zien is die loopt van noord naar zuid.
 \end{itemize}
 
 \end{enumerate}

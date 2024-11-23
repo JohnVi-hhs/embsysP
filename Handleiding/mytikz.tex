@@ -14,13 +14,15 @@
 	
 	\begin{tikzpicture}[node distance=0.4cm]
 		\node (start) [startstop] {Start};
-		\node (globaal) [process, below =of start] {Initialisatie teller, eindgetal};
-		\node (setup) [andSetup, below = of globaal]{Zet: COL3-pin en ROW3-pin op output };
-		
-		\node [draw, text width=4cm, align=center, yshift=-0.5cm] (input) [io, below =of setup]{Voer de waarde van het eindgetal in};
+%		\node (globaal) [process, below =of start] {Initialisatie teller, eindgetal};
+		\node (setup) [andSetup, below = of start]{Zet: COL3-pin en ROW3-pin op output };
+
+	   \node (globaal) [process, below =of setup, yshift=-10pt, align=left] {Initialiseer teller 0\\ Initialiseer eindgetal};
+	
+		\node [draw, text width=4cm, align=center] (input) [io, below =of globaal]{Voer de waarde van het eindgetal in};
 		
 		\node (Match) [decision, below =of input,text width=4cm, align=center] {
-			 (teller $<$ aantal)};
+			 (teller $<$ eindgetal)};
 		\node (LEDAan) [process, below =of Match] {Led aan};
 		\node (wachtA) [process, below =of LEDAan ] {wacht 500ms};
 		\node (LEDUit) [process, below =of wachtA] {Led uit};
@@ -33,20 +35,22 @@
 		dashed,
 		inner sep=12pt,
 		inner xsep=	80pt,
-		fit={(input) (stop)},
+		fit={(globaal) (stop)},
 		] (fit) {};
 		\node[below right, inner sep=2pt] at (fit.north west) {\small{\textbf{Arduino loop}}};
 		
-		\draw [->,ultra thick] (start) -- (globaal);
-		\draw [->,ultra thick] (globaal) -- (setup);
-		\draw [->,ultra thick] (setup) -- (input);
+		\draw [->,ultra thick] (start) -- (setup); 
+		\draw [->,ultra thick] (setup) -- (globaal);
+		
+		\draw [->,ultra thick] (globaal) -- (input);
+
 		\draw [->,ultra thick] (input) -- (Match);
 		
 		\draw [->,ultra thick]  (Match) -- node [anchor=west]{ja}(LEDAan);
 		
-		\draw [->,ultra thick] (tellerPlus.east)  -- ++(1.5,0) |- (input.east);
+		\draw [->,ultra thick] (tellerPlus.east)  -- ++(1.5,0) |- (Match.east);
 		\draw [->,ultra thick]  (Match.west)  -- +(-1.5,0) |- node[pos=0, anchor=south]{nee} (stop);
-		\draw [->,ultra thick] (setup) -- (input);
+%		\draw [->,ultra thick] (setup) -- (input);
 		\draw [->,ultra thick] (input) -- (Match);
 		\draw [->,ultra thick] (Match) -- (LEDAan);
 		\draw [->,ultra thick] (LEDAan) -- (wachtA);
@@ -67,8 +71,8 @@
 	%	\node (globaal) [process, below =of start] {Adafruit_Microbit_Matrix display};
 	
 		\node (random) [process, below =of setup,yshift=-10pt] {genereer een random getal};
-		 \node [draw, text width=4cm, align=center, yshift=-0.5cm] (output) [io, below =of random]{Voer de decimale waarde.};
-    	\node [draw, text width=4cm, align=center, yshift=-0.5cm] (input) [io, below =of output]{Print "Wat is het decimale getal"};
+		 \node [draw, text width=4cm, align=center, yshift=-0.5cm] (output) [io, below =of random]{Print: "Voer een decimale waarde in."};
+    	\node [draw, text width=4cm, align=center, yshift=-0.5cm] (input) [io, below =of output]{Lees de ingevoerde waarde};
 
 
     	\node (Omzet) [process, below =of input] {Zet de ingelezen waarde om naar een integer};

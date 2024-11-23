@@ -25,7 +25,7 @@ Als eerste volgt een korte uitleg aan de hand van het programma \texttt{\textbf{
 
 \section{ Hoe zit een Arduino programma in elkaar?}\label{sec:blink}
 
-We gaan even terug naar het \textbf{blinkdemo} voorbeeld uit de installatiehandleiding (zie listing \ref{lst:blink}).  Als het goed is heb je deze opgeslagen en kun je deze nu openen.
+We gaan even terug naar het  \href{https://github.com/JohnVi-hhs/embsysP/tree/main/voorbeelden/blink.ino}{  \textbf{blinkdemo}} voorbeeld uit de installatiehandleiding (zie listing \ref{lst:blink}).  Als het goed is heb je deze opgeslagen en kun je deze nu openen.
 
 %\begin{lstlisting}[caption= Het programma blinkdemo.,label={lst:blink}]
 	
@@ -217,7 +217,8 @@ void loop() {
 }
 \end{lstlisting}
 
-\paragraph{Opdracht: }Pas listing \ref{lst:ledmtx} zodanig aan, zodat alleen de LEDs D2, D6 en D12 knipperen.\label{blz:opdrmLEDSmatrix}
+\paragraph{Opdracht: }Download  \href{https://github.com/JohnVi-hhs/embsysP/tree/main/voorbeelden/matrixOpdracht.ino}{ Listing \ref{lst:ledmtx} van GitHub} of kopieer listing \ref{lst:ledmtx} en 
+Pas deze zodanig aan, zodat alleen de LEDs D2, D6 en D12 knipperen.\label{blz:opdrmLEDSmatrix}
 
 
 \section{Het gebruik van de seriële poort.}
@@ -254,9 +255,10 @@ Vaak wordt 9600 Baud (bits per seconde) gebruikt. Dit is gedaan omdat hiermee de
 Zorg dat de ingestelde snelheid overeen komt met de instelling \textcolor{BurntOrange}{Serial.begin}(9600) in  \textcolor{OliveGreen}{setup}(). 
 
 %Het programma in Listing \ref{lst:serial}  drukt de waarde van de teller af.\\
-
+\newpage
 \paragraph{Opdracht Seriële communicatie:} \label{blad:aantalknipper}
-Lees via de seriële poort een getal in en laat een LED het aantal keren knipperen zoals het ingelezen getal. Lees hierna opnieuw een getal in, etc...
+Lees via de seriële poort een getal in en laat een LED het aantal keren knipperen zoals het ingelezen getal. Lees hierna opnieuw een getal in, etc...\\
+\textit{Tip:}Lees het getal eerst in als een \href{https://docs.arduino.cc/language-reference/en/functions/communication/serial/readString/}{string} en raadpleeg het voorbeeld dat er bij zit. Zet de ingelezen string vervolgens om naar een integer. Informatie hierover kan gevonden worden bij de arduino referece datatype \href{https://www.arduino.cc/reference/tr/language/variables/data-types/stringobject/}{string}.
 \begin{figure}[H]
 	\captionsetup{justification=centering}
 	\centering
@@ -277,4 +279,3 @@ Bij deze opdracht wordt een random getal tussen de 0 en de 31 gekozen, die vervo
 	\caption{Het raden van de binaire waarde.}
 	\label{fig:flowchart2}
 \end{figure}
-
