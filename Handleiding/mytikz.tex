@@ -71,11 +71,13 @@
 	%	\node (globaal) [process, below =of start] {Adafruit_Microbit_Matrix display};
 	
 		\node (random) [process, below =of setup,yshift=-10pt] {genereer een random getal};
-		 \node [draw, text width=4cm, align=center, yshift=-0.5cm] (output) [io, below =of random]{Print: "Voer een decimale waarde in."};
+    	\node (plaats) [process, below =of random] {plaats het gegenereerde getal op de middelste rij van de matrix};
+		 \node [draw, text width=4cm, align=center, yshift=-0.5cm] (output) [io, below =of plaats ]{Print: "Voer een decimale waarde in."};
     	\node [draw, text width=4cm, align=center, yshift=-0.5cm] (input) [io, below =of output]{Lees de ingevoerde waarde};
 
 
     	\node (Omzet) [process, below =of input] {Zet de ingelezen waarde om naar een integer};
+
       	\node (Verg) [decision, below =of Omzet,text width=4cm, align=center] {
     		(random getal $=$ ingelezen getal)};
  %   	\node (B) [process, below left=1.5cm and 1cm of Verg, draw] {Node B};
@@ -96,7 +98,8 @@
      	\draw [->,ultra thick] (start) -- (globaal);
     	\draw [->,ultra thick] (globaal) -- (setup);
     	\draw [->,ultra thick] (setup) -- (random);
-      	\draw [->,ultra thick] (random) -- (output);
+      	\draw [->,ultra thick] (random) -- (plaats);    	
+      	\draw [->,ultra thick] (plaats) -- (output);
          \draw [->,ultra thick] (output) -- (input);  	
     	\draw [->,ultra thick] (input) -- (Omzet);
         \draw [->,ultra thick] (Omzet) -- (Verg);  	

@@ -1,0 +1,27 @@
+\chapter{opdracht 3}
+
+Bij deze opdracht worden LEDs van de bovenste 4 Rijen van de LED matrix van de microkit gedimd.
+\begin{enumerate}[label=\Alph*.]
+	\item In het onderstaande programma wordt het middelste bit gedimd waarbij de
+	$ duty cycle \text{Duty cycle} = \frac{10}{255} \times 100\% = 3.9\%$ is.
+	De complete code  is te downloaden als \href{https://github.com/JohnVi-hhs/embsysP/tree/main/voorbeelden/dimOpdracht.ino}{voorbeeldcode \ref{lst:changeBut} van GitHub}
+	\begin{lstlisting}[caption= De micro:bit als een kompas,label={lst:dimInp}]
+void setup() {  
+	
+	initMatrix();
+	delay(1000);
+	analogWrite(ROW3,10);
+	
+}
+
+void loop(){
+}
+
+\end{lstlisting}
+
+\item
+
+
+	
+\end{enumerate}
+
